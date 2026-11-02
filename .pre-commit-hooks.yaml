@@ -1,0 +1,13 @@
+# git-clang-format writes to a specific file in .git, so it must not run in
+# parallel; hence require_serial.
+#
+# By default this downloads the latest pinned clang-format.  Override with
+#   args: ['--version', '18.0.0']
+# or use your own binary with
+#   args: ['--binary', 'path/to/clang-format']
+-   id: clang-format-diff
+    name: clang-format-diff
+    entry: clang_format.py
+    language: script
+    require_serial: true
+    types_or: [c++, c, c#, cuda, java, javascript, objective-c, proto]
